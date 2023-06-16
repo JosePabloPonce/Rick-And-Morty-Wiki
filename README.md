@@ -2,6 +2,10 @@
 
 This project is a web application that retrieves information from the Rick and Morty API. It is built using Angular and showcases my skills in frontend development, including lazy loading, API calls validation, modularization, services, responsive design using Bootstrap, absolute routing using aliases, and maintaining clean and scalable code.
 
+# Project Deployment
+
+The project is currently hosted at https://josepabloponce.github.io/Rick-And-Morty-Wiki/home. You can visit this link to access the deployed version of the application and explore its features.
+
 ## Features
 
 - Lazy Loading: The application utilizes lazy loading to optimize performance by loading modules on demand, improving initial load time and reducing resource consumption.
