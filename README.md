@@ -1,27 +1,27 @@
-# RickAndMorty
+# Rick and Morty API Viewer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
+This project is a web application that retrieves information from the Rick and Morty API. It is built using Angular and showcases my skills in frontend development, including lazy loading, API calls validation, modularization, services, responsive design using Bootstrap, absolute routing using aliases, and maintaining clean and scalable code.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Lazy Loading: The application utilizes lazy loading to optimize performance by loading modules on demand, improving initial load time and reducing resource consumption.
 
-## Code scaffolding
+- API Calls Validation: All API requests are properly validated to handle errors, timeouts, and unexpected responses, ensuring a smooth user experience.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Modularization: The project is structured into separate modules, allowing for better organization, encapsulation, and maintainability. Each module represents a distinct feature or functionality.
 
-## Build
+- Services: Services are used to encapsulate API calls, data manipulation, and business logic. They provide a centralized and reusable way to manage data and communication between components.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Responsive Design: Bootstrap is integrated into the project to create responsive and mobile-friendly components, ensuring a seamless user experience across different devices and screen sizes.
 
-## Running unit tests
+- Absolute Routing with Aliases: The project uses aliases to enable absolute path routing, making the code more maintainable and readable. Aliases provide a clear and concise way to reference different parts of the project without relying on relative paths.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Shared Components: The shared folder contains reusable components that can be easily used across multiple modules. This promotes code reusability and reduces duplication.
 
-## Running end-to-end tests
+- Interfaces: Interfaces are utilized to define the structure and shape of data objects, ensuring consistency and providing a clear contract for data manipulation and communication.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Conclusion
 
-## Further help
+This project demonstrates my proficiency in Angular development, showcasing key features such as lazy loading, API calls validation, modularization, services, responsive design using Bootstrap, absolute routing with aliases, shared components, and interfaces. It reflects my commitment to writing clean, scalable, and maintainable code.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+For further details, please refer to the codebase and feel free to reach out if you have any questions.
