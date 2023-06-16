@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  assetPath: string | undefined;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.assetPath = `${document.baseURI}assets/logo.png`;
+
   }
 
 }
