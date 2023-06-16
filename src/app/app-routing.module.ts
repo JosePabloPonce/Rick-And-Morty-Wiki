@@ -12,10 +12,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path:'character-list',
-    loadChildren: () => import('@character-list/character-list.module').then(m => m.CharacterListModule)
-  },
-  {
     path:'character-details/:id',
     loadChildren: () => import('@character-details/character-details.module').then(m => m.CharacterDetailsModule)
   },
