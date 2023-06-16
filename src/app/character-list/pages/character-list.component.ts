@@ -4,6 +4,8 @@ import {Character} from '@shared/interfaces/Icharacters'
 import { Subscription, take } from 'rxjs';
 import {RequestInfo} from '@shared/interfaces/IrequestInfo'
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { catchError, of } from 'rxjs';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-character-list',
@@ -13,15 +15,16 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class CharacterListComponent implements OnInit {
 
   characters: Character[] = [];
+  isButtonDisabled: boolean = false;
 
   info: RequestInfo = {
     next: null,
   };
 
   private pageNum = 1;
+  private pageNumQuery = 1;
+
   private query!: string;
-  private hideScrollHeight = 200;
-  private showScrollHeight = 500;
   private queryParamsSubscription?: Subscription;
 
   constructor(
@@ -36,7 +39,7 @@ export class CharacterListComponent implements OnInit {
 
   private getCharactersByQuery(): void {
     this.queryParamsSubscription =  this.route.queryParams.subscribe(params => {
-      console.log('params->', params);
+      this.pageNum=1
       this.query = params['q'];
       this.getDataFromService();
     });
@@ -48,24 +51,53 @@ export class CharacterListComponent implements OnInit {
     }
   }
 
-  private onUrlChanged(): void{
-    
-  }
-
-  private getDataFromService (): void {
+  loadMoreCharacters(): void{
     this.CharacterSvc.searchCharacters(this.query, this.pageNum)
     .pipe(
       take(1)
       ).subscribe((res:any)=>{
-        if(res?.results?.length){
-          console.log(res)
           const {info, results} = res;
+          this.characters = [...this.characters, ...results];
+          this.info = info;
+          this.pageNum+=1
+          
+          if(info.next === null){
+            this.isButtonDisabled = true
+          }
+    })
+  }
+
+  private getDataFromService (): void {
+    this.CharacterSvc.searchCharacters(this.query, this.pageNum)
+      .pipe(
+        take(1),
+        catchError((error) => {
+          if (error.status === 404) {
+            this.characters = [];
+            this.isButtonDisabled = true;
+            return of(null);
+          }
+          return throwError(error);
+        })
+      )
+      .subscribe((res: any) => {
+        if (res === null) {
+          return;
+        }
+  
+        if (res?.results?.length) {
+          const { info, results } = res;
           this.characters = [...results];
           this.info = info;
-        } else {
-          this.characters = [];
+  
+          if (info.next === null) {
+            this.isButtonDisabled = true;
+          } else {
+            this.isButtonDisabled = false;
+          }
         }
-    })
+      });
+    this.pageNum += 1;
   }
 
 }

@@ -23,11 +23,11 @@
     </div>
     
     <div class="col-xs-12 col-sm-12 col-md-12 mt-5 container-notFound" *ngIf="characters.length <= 0">
-        <p>No Results...</p>
+        <h2 class="text-center pb-5">No Results...</h2>
     </div>
     
-    <button class="btn btn-dark">
-        Go UP
+    <button (click)="loadMoreCharacters()" class="btn btn-dark" [disabled]="isButtonDisabled" >
+        Load More
     </button>
 
 </div>

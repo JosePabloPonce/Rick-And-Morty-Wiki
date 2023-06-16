@@ -13,10 +13,12 @@
                     <div class="header">
                             <h2>{{character.name | slice: 0:15}}</h2>
                         <h4 class="text-muted">{{character.gender}}</h4>
+
                         <small class="text-muted">{{character.created | date}}</small>
                     </div>
                 </div>
             </div>
+            <h2 class="text-center font-status">Status: <span class="status"> {{character.status}}</span></h2>
             <button (click)="GoBack()" class="btn btn-grad btn-lg">
                 Back
               </button>

@@ -11,7 +11,7 @@ import { CharacterListComponent } from '@character-list/pages/character-list.com
   ],
   imports: [
     CommonModule,
-    CharacterListRoutingModule
+    CharacterListRoutingModule,
   ],
   exports: [
     CharacterListComponent
