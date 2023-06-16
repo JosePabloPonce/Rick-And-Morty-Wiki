@@ -1,7 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path:'home',
+    loadChildren: () => import('@homepage/homepage.module').then(m => m.HomepageModule)
+  },
+  {
+    path:'',
+    redirectTo:'home',
+    pathMatch: 'full'
+  },
+  {
+    path:'character-list',
+    loadChildren: () => import('@character-list/character-list.module').then(m => m.CharacterListModule)
+  },
+  {
+    path:'character-details/:id',
+    loadChildren: () => import('@character-details/character-details.module').then(m => m.CharacterDetailsModule)
+  },
+  {
+    path:'**',
+    loadChildren: () => import('@page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
